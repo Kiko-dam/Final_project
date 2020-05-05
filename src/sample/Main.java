@@ -1,4 +1,4 @@
-//COMENTARIO DE PRUEBA DE DANI
+//COMMENT PRUEBA DANI
 
 package sample;
 
