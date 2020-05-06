@@ -17,8 +17,8 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <ListView prefHeight="100.0" prefWidth="371.0" />
-            <ListView prefHeight="100.0" prefWidth="419.0" />
+            <ListView fx:id="listUnits" prefHeight="100.0" prefWidth="371.0" />
+            <ListView fx:id="listSections" prefHeight="100.0" prefWidth="419.0" />
          </children>
       </HBox>
       <TextArea fx:id="txtArea" editable="false" pickOnBounds="false" prefHeight="253.0" prefWidth="600.0" scaleShape="false" wrapText="true" />
