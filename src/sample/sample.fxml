@@ -6,8 +6,8 @@
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" spacing="40.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
+      <Label prefHeight="26.0" prefWidth="86.0" text="Ventana inicio" />
       <Button mnemonicParsing="false" onAction="#loadContent" text="Temario" />
-      <Button mnemonicParsing="false" text="Test" />
       <Button mnemonicParsing="false" text="Progreso" />
    </children>
    <opaqueInsets>
