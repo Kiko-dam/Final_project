@@ -38,7 +38,8 @@ public class ContentController implements Initializable
     List<Unit> units = new ArrayList<>();
     public ObservableList<Unit> shownUnits;
     public ObservableList<String> shownSections;
-    int chosenUnit;
+    static int chosenUnit;
+    static int chosenSection;
     Alert error = new Alert(Alert.AlertType.ERROR);
 
     @Override
@@ -118,6 +119,7 @@ public class ContentController implements Initializable
                     if (newValue != null)
                     {
                         ShowContent(newValue);
+                        chosenSection= listSections.getSelectionModel().getSelectedIndex()+1;
                     }
                 }
         );
@@ -159,6 +161,18 @@ public class ContentController implements Initializable
 
     public void loadTest(ActionEvent actionEvent) throws IOException {
         TestController test = new TestController();
-        test.openTestWindow();
+
+        test.openTestWindow(listSections.getSelectionModel().getSelectedItems().toString());
+    }
+
+    public static int getUnit()
+    {
+
+        return chosenUnit;
+    }
+
+    public int getSection()
+    {
+        return chosenSection;
     }
 }
