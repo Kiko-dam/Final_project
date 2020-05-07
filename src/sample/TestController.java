@@ -27,16 +27,13 @@ public class TestController  implements Initializable {
     public CheckBox c1;
     public CheckBox c2;
     public CheckBox c3;
-    ContentController c;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        //Instancio un objeto de la clase content
-        c = new ContentController();
         //Obtengo la unidad actual y la seccion actual
-        unit =   c.getUnit();
-        section = c.getSection();
+        unit =   ContentController.getUnit();
+        section = ContentController.getSection();
         test= new ArrayList<>();
 
         this.loadTest();

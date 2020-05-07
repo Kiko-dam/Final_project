@@ -171,7 +171,7 @@ public class ContentController implements Initializable
         return chosenUnit;
     }
 
-    public int getSection()
+    public static int getSection()
     {
         return chosenSection;
     }
