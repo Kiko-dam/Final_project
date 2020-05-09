@@ -1,5 +1,6 @@
 package sample.controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.InputEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.controllers.ContentController;
@@ -37,6 +39,10 @@ public class TestController  implements Initializable {
     public Label lblScore;
     public boolean alreadyAnswered;
     public  Stage stage;
+    public  Scene scene;
+    public Button btnStart;
+    public Button btnCheckQuestion;
+    public Label lblAnswers;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -48,7 +54,6 @@ public class TestController  implements Initializable {
         test = new ArrayList<>();
         actualQuestion = 0;
         this.loadTest();
-
     }
 
     @FXML
@@ -57,19 +62,27 @@ public class TestController  implements Initializable {
         //La nueva ventana tendra como nombre la unidad y la seccion de la que se está haciendo el test nuevo.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("test.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         stage = new Stage();
         stage.setTitle("-Test " + sectionName);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
+    }
+    @FXML
+    public void closeTestWindow() throws IOException
+    {
+        //La nueva ventana tendra como nombre la unidad y la seccion de la que se está haciendo el test nuevo.
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("test.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+        stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
         stage.close();
     }
 
-    public void cerrarVentana() {
-        stage = (Stage) stage.getScene().getWindow();
-        stage.close();
-    }
+
 
     public void loadTest()
     {
@@ -138,10 +151,9 @@ public class TestController  implements Initializable {
         lblScore.setText("0/"+totalQuestions);
         System.out.println("preguntas: "+totalQuestions);
         alreadyAnswered =true;
-        generateQuestion();
     }
 
-    public void generateQuestion()
+    public void generateQuestion(ActionEvent actionEvent)
     {
         Alert dialog;
         if(actualQuestion < totalQuestions) {
@@ -160,10 +172,17 @@ public class TestController  implements Initializable {
 
             }
         }
-        else
-            this.cerrarVentana();
+        else {
+            dialog = new Alert(Alert.AlertType.INFORMATION);
+            dialog.setTitle("Test results");
+            dialog.setHeaderText("");
+            dialog.setContentText("Great job you did a total of "+
+                    lblScore.getText().split("/")[0] +
+                    "corrects answers");
+            dialog.showAndWait();
 
-
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        }
     }
 
     public void checkQuestion(ActionEvent actionEvent)
@@ -197,6 +216,7 @@ public class TestController  implements Initializable {
                 dialog.showAndWait();
                 alreadyAnswered = true;
                 actualQuestion++;
+                generateQuestion(actionEvent);
             } else {
                 dialog = new Alert(Alert.AlertType.INFORMATION);
                 dialog.setTitle("Good Job");
@@ -207,6 +227,7 @@ public class TestController  implements Initializable {
                 lblScore.setText(actualScore + "/" + lblScore.getText().split("/")[1]);
                 alreadyAnswered = true;
                 actualQuestion++;
+                generateQuestion(actionEvent);
             }
         }
         else
@@ -218,6 +239,23 @@ public class TestController  implements Initializable {
             dialog.showAndWait();
         }
 
+    }
+
+    public void startTest(ActionEvent actionEvent)
+    {
+        generateQuestion(actionEvent);
+        btnStart.visibleProperty().setValue(false);
+        btnCheckQuestion.visibleProperty().setValue(true);
+        lblAnswer1.visibleProperty().setValue(true);
+        lblAnswer2.visibleProperty().setValue(true);
+        lblAnswer3.visibleProperty().setValue(true);
+        lblScore.visibleProperty().setValue(true);
+        txtQuestion.visibleProperty().setValue(true);
+        c1.visibleProperty().setValue(true);
+        c2.visibleProperty().setValue(true);
+        c3.visibleProperty().setValue(true);
+        lblScore.visibleProperty().setValue(true);
+        lblAnswers.visibleProperty().setValue(true);
     }
 }
 
