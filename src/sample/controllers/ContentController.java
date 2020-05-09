@@ -89,7 +89,6 @@ public class ContentController implements Initializable
     private void showSections(int numberOfUnit)
     {
         String pathOfTitles = "src/texts/unit/" + numberOfUnit + "/sections.txt";
-        //String pathOfContents = "src/texts/unit/" + numberOfUnit + "/sections.txt";
         List<String> sect = new ArrayList<>();
         try {
             BufferedReader inputFile = new BufferedReader(
