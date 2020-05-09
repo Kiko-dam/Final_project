@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -20,7 +21,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class TestController  implements Initializable {
-
     public List<String> lines;
     public List<Test> test;
     public int unit;
@@ -35,8 +35,8 @@ public class TestController  implements Initializable {
     public int actualQuestion;
     public int totalQuestions;
     public Label lblScore;
-
     public boolean alreadyAnswered;
+    public  Stage stage;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -48,7 +48,7 @@ public class TestController  implements Initializable {
         test = new ArrayList<>();
         actualQuestion = 0;
         this.loadTest();
-        alreadyAnswered =true;
+
     }
 
     @FXML
@@ -58,11 +58,17 @@ public class TestController  implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("test.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        Stage stage = new Stage();
+        stage = new Stage();
         stage.setTitle("-Test " + sectionName);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
+        stage.close();
+    }
+
+    public void cerrarVentana() {
+        stage = (Stage) stage.getScene().getWindow();
+        stage.close();
     }
 
     public void loadTest()
@@ -90,6 +96,7 @@ public class TestController  implements Initializable {
 
         startTest();
     }
+
     public void startTest()
     {
         //Aqui tendremos que hacer el bloque que vaya sacando las preguntas de la lista con las preguntas cargadas anteriormente
@@ -130,27 +137,33 @@ public class TestController  implements Initializable {
         Collections.shuffle(test);
         lblScore.setText("0/"+totalQuestions);
         System.out.println("preguntas: "+totalQuestions);
+        alreadyAnswered =true;
         generateQuestion();
     }
 
     public void generateQuestion()
     {
         Alert dialog;
-        if(!alreadyAnswered)
-        {
-            dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setTitle("Error");
-            dialog.setHeaderText("");
-            dialog.setContentText(" First check this question! It's not answered!");
-            dialog.showAndWait();
+        if(actualQuestion < totalQuestions) {
+            if (alreadyAnswered) {
+                txtQuestion.setText(test.get(actualQuestion).getQuestion());
+                lblAnswer1.setText(test.get(actualQuestion).getAnswer1());
+                lblAnswer2.setText(test.get(actualQuestion).getAnswer2());
+                lblAnswer3.setText(test.get(actualQuestion).getAnswer3());
+                alreadyAnswered = false;
+            } else {
+                dialog = new Alert(Alert.AlertType.ERROR);
+                dialog.setTitle("Error");
+                dialog.setHeaderText("");
+                dialog.setContentText(" First check this question! It's not answered!");
+                dialog.showAndWait();
+
+            }
         }
-        else {
-            txtQuestion.setText(test.get(actualQuestion).getQuestion());
-            lblAnswer1.setText(test.get(actualQuestion).getAnswer1());
-            lblAnswer2.setText(test.get(actualQuestion).getAnswer2());
-            lblAnswer3.setText(test.get(actualQuestion).getAnswer3());
-            alreadyAnswered = false;
-        }
+        else
+            this.cerrarVentana();
+
+
     }
 
     public void checkQuestion(ActionEvent actionEvent)
@@ -180,9 +193,10 @@ public class TestController  implements Initializable {
                 dialog = new Alert(Alert.AlertType.WARNING);
                 dialog.setTitle("Error");
                 dialog.setHeaderText("");
-                dialog.setContentText("It was the option X");
+                dialog.setContentText("It was the option " +test.get(actualQuestion).correctAnswer);
                 dialog.showAndWait();
                 alreadyAnswered = true;
+                actualQuestion++;
             } else {
                 dialog = new Alert(Alert.AlertType.INFORMATION);
                 dialog.setTitle("Good Job");
@@ -192,7 +206,7 @@ public class TestController  implements Initializable {
                 actualScore++;
                 lblScore.setText(actualScore + "/" + lblScore.getText().split("/")[1]);
                 alreadyAnswered = true;
-
+                actualQuestion++;
             }
         }
         else

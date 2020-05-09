@@ -157,9 +157,10 @@ public class ContentController implements Initializable
     }
 
     public void loadTest(ActionEvent actionEvent) throws IOException {
-        TestController test = new TestController();
+        TestController newTest = new TestController();
 
-        test.openTestWindow(listSections.getSelectionModel().getSelectedItems().toString());
+        newTest.openTestWindow(listSections.getSelectionModel().getSelectedItems().toString());
+
     }
 
     public static int getUnit()
