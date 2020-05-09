@@ -55,6 +55,8 @@ public class ContentController implements Initializable
         );
     }
 
+
+
     private void showUnits()
     {
         try {
@@ -164,9 +166,9 @@ public class ContentController implements Initializable
 
     public static int getUnit()
     {
-
         return chosenUnit;
     }
+
 
     public static int getSection()
     {

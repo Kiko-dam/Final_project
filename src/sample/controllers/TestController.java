@@ -34,15 +34,15 @@ public class TestController  implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
         //Obtengo la unidad actual y la seccion actual
-        unit =   ContentController.getUnit();
+        unit = ContentController.getUnit();
         section = ContentController.getSection();
-        test= new ArrayList<>();
+        test = new ArrayList<>();
 
         this.loadTest();
     }
 
     @FXML
-    public void openTestWindow( String sectionName) throws IOException
+    public void openTestWindow(String sectionName) throws IOException
     {
         //La nueva ventana tendra como nombre la unidad y la seccion de la que se está haciendo el test nuevo.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("test.fxml"));
@@ -115,7 +115,6 @@ public class TestController  implements Initializable {
         }
         else
         {
-
             dialog = new Alert(Alert.AlertType.INFORMATION);
             dialog.setTitle("Good Job");
             dialog.setHeaderText("");
