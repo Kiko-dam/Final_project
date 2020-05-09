@@ -9,19 +9,19 @@
       <HBox alignment="CENTER" prefHeight="84.0" prefWidth="600.0" spacing="50.0">
          <children>
             <Label fx:id="lblAnswer1" text="Answer" />
-            <CheckBox fx:id="c1" mnemonicParsing="false" text="A" />
+            <CheckBox fx:id="c1" mnemonicParsing="false" pickOnBounds="false" text="A" />
          </children>
       </HBox>
-       <HBox alignment="CENTER" prefHeight="96.0" prefWidth="600.0" spacing="50.0">
+       <HBox alignment="CENTER" pickOnBounds="false" prefHeight="96.0" prefWidth="600.0" spacing="50.0">
            <children>
                <Label fx:id="lblAnswer2" text="Answer" />
-               <CheckBox fx:id="c2" mnemonicParsing="false" text="B" />
+               <CheckBox fx:id="c2" mnemonicParsing="false" pickOnBounds="false" text="B" />
            </children>
        </HBox>
        <HBox alignment="CENTER" prefHeight="75.0" prefWidth="600.0" spacing="50.0">
            <children>
                <Label fx:id="lblAnswer3" text="Answer" />
-               <CheckBox fx:id="c3" mnemonicParsing="false" text="C" textAlignment="RIGHT" />
+               <CheckBox fx:id="c3" mnemonicParsing="false" pickOnBounds="false" text="C" textAlignment="RIGHT" />
            </children>
        </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">

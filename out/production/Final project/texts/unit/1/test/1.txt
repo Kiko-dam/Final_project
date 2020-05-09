@@ -1,4 +1,15 @@
-Pregunta 1¿?...
+Pregunta1¿?...
 Respuesta A
 Respuesta B
 Respuesta C
+2
+Pregunta2¿?...
+Respuesta A
+Respuesta B
+Respuesta C
+3
+Pregunta3¿?...
+Respuesta A
+Respuesta B
+Respuesta C
+1

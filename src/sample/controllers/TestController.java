@@ -88,52 +88,51 @@ public class TestController  implements Initializable {
     public void startTest()
     {
         //Aqui tendremos que hacer el bloque que vaya sacando las preguntas de la lista con las preguntas cargadas anteriormente
-
+        Test t;
+        String question="";
+        String answer1="";
+        String answer2="";
+        String answer3="";
         int position = 1;
         for(int i = 0; i < lines.size();i++)
         {
-            Test t ;
-            String question="";
-            String answer1="";
-            String answer2="";
-            String answer3="";
-            int correctAnswer;
+            int correctAnswer=0;
             switch (position)
             {
-                case 1: question = lines.get(i);
+                case 1:
+                    question = lines.get(i);
                     position++;
-                break;
-                case 2: answer1 = lines.get(i);
+                    break;
+                case 2:
+                    answer1 = lines.get(i);
                     position++;
-                break;
-                case 3: answer2 = lines.get(i);
+                    break;
+                case 3:
+                    answer2 = lines.get(i);
                     position++;
-                break;
-                case 4: answer3 = lines.get(i);
+                    break;
+                case 4:
+                    answer3 = lines.get(i);
                     position++;
-                break;
-                case 5:correctAnswer = Integer.parseInt(lines.get(i));
-                    position = 0;
-                    t = new Test(question,answer1,answer2,answer3,correctAnswer);
-                    test.add(t);
+                    break;
+                case 5:
+                    correctAnswer = Integer.parseInt(lines.get(i));
+                    position = 1;
                     break;
             }
+            t = new Test(question,answer1,answer2,answer3,correctAnswer);
+            test.add(t);
         }
-        totalQuestions =test.size();
         Collections.shuffle(test);
-        /*txtQuestion.setText(test.get(0));
-        lblAnswer1.setText(test.get(1));
-        lblAnswer2.setText(test.get(2));
-        lblAnswer3.setText(test.get(3));*/
-
+        generateQuestion();
     }
 
     public void generateQuestion()
     {
-        txtQuestion.setText(test.get(actualQuestion).question);
-        lblAnswer1.setText(test.get(actualQuestion).answer1);
-        lblAnswer2.setText(test.get(actualQuestion).answer2);
-        lblAnswer3.setText(test.get(actualQuestion).answer3);
+        txtQuestion.setText(test.get(actualQuestion).getQuestion());
+        lblAnswer1.setText(test.get(actualQuestion).getAnswer1());
+        lblAnswer2.setText(test.get(actualQuestion).getAnswer2());
+        lblAnswer3.setText(test.get(actualQuestion).getAnswer3());
     }
 
     public void checkQuestion(ActionEvent actionEvent)
