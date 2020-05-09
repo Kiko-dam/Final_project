@@ -29,11 +29,14 @@ public class TestController  implements Initializable {
     public Label lblAnswer2;
     public Label lblAnswer3;
     public TextArea txtQuestion;
-    public CheckBox c1;
-    public CheckBox c2;
-    public CheckBox c3;
+    public RadioButton c1;
+    public RadioButton c2;
+    public RadioButton c3;
     public int actualQuestion;
     public int totalQuestions;
+    public Label lblScore;
+
+    public boolean alreadyAnswered;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -44,8 +47,8 @@ public class TestController  implements Initializable {
         lines= new ArrayList<>();
         test = new ArrayList<>();
         actualQuestion = 0;
-
         this.loadTest();
+        alreadyAnswered =true;
     }
 
     @FXML
@@ -77,30 +80,32 @@ public class TestController  implements Initializable {
                 }
                 while (line != null);
                 inputFile.close();
-                startTest();
+
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+        startTest();
     }
     public void startTest()
     {
         //Aqui tendremos que hacer el bloque que vaya sacando las preguntas de la lista con las preguntas cargadas anteriormente
-
         int position = 1;
+        Test t ;
+        String question="";
+        String answer1="";
+        String answer2="";
+        String answer3="";
         for(int i = 0; i < lines.size();i++)
         {
-            Test t ;
-            String question="";
-            String answer1="";
-            String answer2="";
-            String answer3="";
             int correctAnswer;
             switch (position)
             {
                 case 1: question = lines.get(i);
+                    System.out.println(lines.get(i));
                     position++;
                 break;
                 case 2: answer1 = lines.get(i);
@@ -112,28 +117,40 @@ public class TestController  implements Initializable {
                 case 4: answer3 = lines.get(i);
                     position++;
                 break;
-                case 5:correctAnswer = Integer.parseInt(lines.get(i));
-                    position = 0;
+                case 5:
+                    correctAnswer = Integer.parseInt(lines.get(i));
+                    position = 1;
                     t = new Test(question,answer1,answer2,answer3,correctAnswer);
                     test.add(t);
                     break;
             }
         }
+
         totalQuestions =test.size();
         Collections.shuffle(test);
-        /*txtQuestion.setText(test.get(0));
-        lblAnswer1.setText(test.get(1));
-        lblAnswer2.setText(test.get(2));
-        lblAnswer3.setText(test.get(3));*/
-
+        lblScore.setText("0/"+totalQuestions);
+        System.out.println("preguntas: "+totalQuestions);
+        generateQuestion();
     }
 
     public void generateQuestion()
     {
-        txtQuestion.setText(test.get(actualQuestion).question);
-        lblAnswer1.setText(test.get(actualQuestion).answer1);
-        lblAnswer2.setText(test.get(actualQuestion).answer2);
-        lblAnswer3.setText(test.get(actualQuestion).answer3);
+        Alert dialog;
+        if(!alreadyAnswered)
+        {
+            dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("Error");
+            dialog.setHeaderText("");
+            dialog.setContentText(" First check this question! It's not answered!");
+            dialog.showAndWait();
+        }
+        else {
+            txtQuestion.setText(test.get(actualQuestion).getQuestion());
+            lblAnswer1.setText(test.get(actualQuestion).getAnswer1());
+            lblAnswer2.setText(test.get(actualQuestion).getAnswer2());
+            lblAnswer3.setText(test.get(actualQuestion).getAnswer3());
+            alreadyAnswered = false;
+        }
     }
 
     public void checkQuestion(ActionEvent actionEvent)
@@ -141,39 +158,49 @@ public class TestController  implements Initializable {
         //Creo que este podria ser un método por  ejemplo, deberiamos pasarle las respuestas y podemos avisar al usuario
         //A través de  ventanas si acierta o falla..
         Alert dialog;
-        int correctAnswer = test.get(actualQuestion).correctAnswer;
+        if(!alreadyAnswered) {
+            int actualScore = Integer.parseInt(lblScore.getText().split("/")[0]);
 
-        boolean success = false;
+            int correctAnswer = test.get(actualQuestion).correctAnswer;
+            boolean success = false;
+            if (c1.isSelected()) {
+                if (correctAnswer == 1)
+                    success = true;
+            }
+            if (c2.isSelected()) {
+                if (correctAnswer == 2)
+                    success = true;
+            }
+            if (c3.isSelected()) {
+                if (correctAnswer == 3)
+                    success = true;
+            }
 
-        if(c1.isSelected()) {
-            if(correctAnswer ==1)
-                success = true;
-        }
-        if(c2.isSelected()) {
-            if(correctAnswer ==2)
-                success = true;
+            if (!success) {
+                dialog = new Alert(Alert.AlertType.WARNING);
+                dialog.setTitle("Error");
+                dialog.setHeaderText("");
+                dialog.setContentText("It was the option X");
+                dialog.showAndWait();
+                alreadyAnswered = true;
+            } else {
+                dialog = new Alert(Alert.AlertType.INFORMATION);
+                dialog.setTitle("Good Job");
+                dialog.setHeaderText("");
+                dialog.setContentText("Perfect!");
+                dialog.showAndWait();
+                actualScore++;
+                lblScore.setText(actualScore + "/" + lblScore.getText().split("/")[1]);
+                alreadyAnswered = true;
 
-        }
-        if(c3.isSelected()) {
-            if(correctAnswer ==3)
-                success = true;
-        }
-
-        if(!success)
-        {
-            dialog = new Alert(Alert.AlertType.WARNING);
-            dialog.setTitle("Error");
-            dialog.setHeaderText("");
-            dialog.setContentText("It was the option X");
-            dialog.showAndWait();
+            }
         }
         else
         {
-
-            dialog = new Alert(Alert.AlertType.INFORMATION);
-            dialog.setTitle("Good Job");
+            dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("Error");
             dialog.setHeaderText("");
-            dialog.setContentText("Perfect!");
+            dialog.setContentText("Question already answered!");
             dialog.showAndWait();
         }
 
