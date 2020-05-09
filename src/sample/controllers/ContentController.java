@@ -142,21 +142,6 @@ public class ContentController implements Initializable
         }
     }
 
-
-    @FXML
-    public void openContentWindow() throws IOException
-    {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("content.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setTitle("Content");
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
-
-    }
-
     public void loadTest(ActionEvent actionEvent) throws IOException {
         TestController newTest = new TestController();
         newTest.openTestWindow(listSections.getSelectionModel().getSelectedItems().toString());
