@@ -1,6 +1,4 @@
 package sample.controllers;
-
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,12 +7,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.InputEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sample.controllers.ContentController;
 import sample.data.Test;
-
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -69,20 +64,6 @@ public class TestController  implements Initializable {
         stage.setScene(scene);
         stage.showAndWait();
     }
-    @FXML
-    public void closeTestWindow() throws IOException
-    {
-        //La nueva ventana tendra como nombre la unidad y la seccion de la que se está haciendo el test nuevo.
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("test.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
-        stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.close();
-    }
-
-
 
     public void loadTest()
     {
@@ -145,7 +126,6 @@ public class TestController  implements Initializable {
                     break;
             }
         }
-
         totalQuestions =test.size();
         Collections.shuffle(test);
         lblScore.setText("0/"+totalQuestions);
