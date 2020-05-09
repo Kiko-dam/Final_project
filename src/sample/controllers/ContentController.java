@@ -1,4 +1,4 @@
-package sample;
+package sample.controllers;
 
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -14,7 +14,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sample.data.Section;
 import sample.data.Unit;
 
 import java.io.BufferedReader;
@@ -25,10 +24,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class ContentController implements Initializable
 {

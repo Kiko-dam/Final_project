@@ -1,7 +1,8 @@
-package sample;
+package sample.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import sample.controllers.ContentController;
 
 import java.io.IOException;
 import java.net.URL;
