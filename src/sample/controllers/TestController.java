@@ -1,6 +1,8 @@
 package sample.controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.InputEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.controllers.ContentController;
@@ -37,6 +40,12 @@ public class TestController  implements Initializable {
     public Label lblScore;
     public boolean alreadyAnswered;
     public  Stage stage;
+    public boolean finished;
+    public int c;
+
+    public TestController() {
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -48,7 +57,7 @@ public class TestController  implements Initializable {
         test = new ArrayList<>();
         actualQuestion = 0;
         this.loadTest();
-
+        finished = false;
     }
 
     @FXML
@@ -62,13 +71,8 @@ public class TestController  implements Initializable {
         stage.setTitle("-Test " + sectionName);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-        stage.showAndWait();
-        stage.close();
-    }
-
-    public void cerrarVentana() {
-        stage = (Stage) stage.getScene().getWindow();
-        stage.close();
+        stage.show();
+        aux();
     }
 
     public void loadTest()
@@ -151,20 +155,34 @@ public class TestController  implements Initializable {
                 lblAnswer2.setText(test.get(actualQuestion).getAnswer2());
                 lblAnswer3.setText(test.get(actualQuestion).getAnswer3());
                 alreadyAnswered = false;
-            } else {
+            }
+            else
+            {
                 dialog = new Alert(Alert.AlertType.ERROR);
                 dialog.setTitle("Error");
                 dialog.setHeaderText("");
                 dialog.setContentText(" First check this question! It's not answered!");
                 dialog.showAndWait();
-
             }
         }
         else
-            this.cerrarVentana();
-
-
+        {
+            finished = true;
+        }
     }
+
+    public void aux()
+    {
+        if (finished)
+        {
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("Error");
+            dialog.setHeaderText("");
+            dialog.setContentText("FINISHED");
+            dialog.showAndWait();
+        }
+    }
+
 
     public void checkQuestion(ActionEvent actionEvent)
     {
