@@ -2,7 +2,6 @@ package sample.controllers;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -40,12 +39,10 @@ public class TestController  implements Initializable {
     public Label lblScore;
     public boolean alreadyAnswered;
     public  Stage stage;
-    public boolean finished;
-    public int c;
-
-    public TestController() {
-    }
-
+    public  Scene scene;
+    public Button btnStart;
+    public Button btnCheckQuestion;
+    public Label lblAnswers;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -57,7 +54,6 @@ public class TestController  implements Initializable {
         test = new ArrayList<>();
         actualQuestion = 0;
         this.loadTest();
-        finished = false;
     }
 
     @FXML
@@ -66,14 +62,27 @@ public class TestController  implements Initializable {
         //La nueva ventana tendra como nombre la unidad y la seccion de la que se está haciendo el test nuevo.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("test.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         stage = new Stage();
         stage.setTitle("-Test " + sectionName);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-        stage.show();
-        aux();
+        stage.showAndWait();
     }
+    @FXML
+    public void closeTestWindow() throws IOException
+    {
+        //La nueva ventana tendra como nombre la unidad y la seccion de la que se está haciendo el test nuevo.
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("test.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+        stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.close();
+    }
+
+
 
     public void loadTest()
     {
@@ -142,10 +151,9 @@ public class TestController  implements Initializable {
         lblScore.setText("0/"+totalQuestions);
         System.out.println("preguntas: "+totalQuestions);
         alreadyAnswered =true;
-        generateQuestion();
     }
 
-    public void generateQuestion()
+    public void generateQuestion(ActionEvent actionEvent)
     {
         Alert dialog;
         if(actualQuestion < totalQuestions) {
@@ -155,34 +163,27 @@ public class TestController  implements Initializable {
                 lblAnswer2.setText(test.get(actualQuestion).getAnswer2());
                 lblAnswer3.setText(test.get(actualQuestion).getAnswer3());
                 alreadyAnswered = false;
-            }
-            else
-            {
+            } else {
                 dialog = new Alert(Alert.AlertType.ERROR);
                 dialog.setTitle("Error");
                 dialog.setHeaderText("");
                 dialog.setContentText(" First check this question! It's not answered!");
                 dialog.showAndWait();
+
             }
         }
-        else
-        {
-            finished = true;
-        }
-    }
-
-    public void aux()
-    {
-        if (finished)
-        {
-            Alert dialog = new Alert(Alert.AlertType.ERROR);
-            dialog.setTitle("Error");
+        else {
+            dialog = new Alert(Alert.AlertType.INFORMATION);
+            dialog.setTitle("Test results");
             dialog.setHeaderText("");
-            dialog.setContentText("FINISHED");
+            dialog.setContentText("Great job you did a total of "+
+                    lblScore.getText().split("/")[0] +
+                    "corrects answers");
             dialog.showAndWait();
+
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
         }
     }
-
 
     public void checkQuestion(ActionEvent actionEvent)
     {
@@ -215,6 +216,7 @@ public class TestController  implements Initializable {
                 dialog.showAndWait();
                 alreadyAnswered = true;
                 actualQuestion++;
+                generateQuestion(actionEvent);
             } else {
                 dialog = new Alert(Alert.AlertType.INFORMATION);
                 dialog.setTitle("Good Job");
@@ -225,6 +227,7 @@ public class TestController  implements Initializable {
                 lblScore.setText(actualScore + "/" + lblScore.getText().split("/")[1]);
                 alreadyAnswered = true;
                 actualQuestion++;
+                generateQuestion(actionEvent);
             }
         }
         else
@@ -236,6 +239,23 @@ public class TestController  implements Initializable {
             dialog.showAndWait();
         }
 
+    }
+
+    public void startTest(ActionEvent actionEvent)
+    {
+        generateQuestion(actionEvent);
+        btnStart.visibleProperty().setValue(false);
+        btnCheckQuestion.visibleProperty().setValue(true);
+        lblAnswer1.visibleProperty().setValue(true);
+        lblAnswer2.visibleProperty().setValue(true);
+        lblAnswer3.visibleProperty().setValue(true);
+        lblScore.visibleProperty().setValue(true);
+        txtQuestion.visibleProperty().setValue(true);
+        c1.visibleProperty().setValue(true);
+        c2.visibleProperty().setValue(true);
+        c3.visibleProperty().setValue(true);
+        lblScore.visibleProperty().setValue(true);
+        lblAnswers.visibleProperty().setValue(true);
     }
 }
 
