@@ -1,0 +1,21 @@
+If we look for the definition of software on the Internet, we can find some of them, although
+they are basically the same. We call software the set of programs, documentation and data
+related with a computer system.
+Each  software product is  (or  can be) different from the  rest, because it is developed for a
+different customer, or to fulfill a different purpose. So, developing this product implies some
+previous steps: understand what we have to do, make a previous design and implement it, as
+we  will  see  later.  Therefore,  we  can't  compare  software  development  with  industrial
+production (such as keyboard manufacturing, for instance), where everything is much more
+automated. Software development requires the creation of a software project, and a group of
+people working in a coordinated way. Besides, software does not break along time, although
+its performance can be reduced because of its own updates and improvements.
+
+1.1.1. Software components
+
+From previous definition of software, we can figure out that it is composed of three elements:
+- Programs: sets of instructions that provide the desired functionality. They are written in
+a specific programming language.
+- Data:  programs  need  data  to  work  with.  These  data  can  be  retrieved  and/or  stored
+from/in databases or files.
+- Documentation: software documents explain how to use it, which elements are part of
+it and how they are interconnected, so that it can be updated or fixed in the future.

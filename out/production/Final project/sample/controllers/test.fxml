@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.TestController">
+   <children>
+      <TextArea fx:id="txtQuestion" editable="false" prefHeight="95.0" prefWidth="577.0" wrapText="true" />
+      <Button fx:id="btnStart" mnemonicParsing="false" onAction="#startTest" text="Start test!" />
+      <HBox alignment="CENTER" prefHeight="84.0" prefWidth="600.0" spacing="50.0">
+         <children>
+            <Label fx:id="lblAnswer1" text="Answer" visible="false" />
+            <RadioButton fx:id="c1" mnemonicParsing="false" selected="true" text="A" visible="false">
+               <toggleGroup>
+                  <ToggleGroup fx:id="answers" />
+               </toggleGroup></RadioButton>
+         </children>
+      </HBox>
+       <HBox alignment="CENTER" prefHeight="96.0" prefWidth="600.0" spacing="50.0">
+           <children>
+               <Label fx:id="lblAnswer2" text="Answer" visible="false" />
+               <RadioButton fx:id="c2" mnemonicParsing="false" text="B" toggleGroup="$answers" visible="false" />
+           </children>
+       </HBox>
+       <HBox alignment="CENTER" prefHeight="75.0" prefWidth="600.0" spacing="50.0">
+           <children>
+               <Label fx:id="lblAnswer3" text="Answer" visible="false" />
+               <RadioButton fx:id="c3" mnemonicParsing="false" text="C" textAlignment="RIGHT" toggleGroup="$answers" visible="false" />
+           </children>
+       </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+         <children>
+            <Button fx:id="btnCheckQuestion" mnemonicParsing="false" onAction="#checkQuestion" text="Check" visible="false" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="36.0" prefWidth="600.0" spacing="30.0">
+         <children>
+            <Label fx:id="lblAnswers" alignment="TOP_LEFT" text="Correct answers" visible="false" />
+            <Label fx:id="lblScore" alignment="CENTER_RIGHT" contentDisplay="CENTER" text="0 / 10" visible="false" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

@@ -1,0 +1,14 @@
+1.1.3. C language
+
+If we have to define in a few words what C language is, maybe the most suitable definition
+would  be  the  language,  because  most  of  current  languages  are  based  on  it.  In  fact,  C
+language is an evolution of an older language, called B, but it was not so popular.
+Before C language  arrived, programmers used  some  kind of physical devices to implement
+their  programs,  such  as  perforated  cards,  or  in  the  best  case,  some  assembly,  low  level
+language, hard to understand, write and maintain.
+Therefore, we can figure out that the arrival of C language in the beginning of the 70s was a
+complete success. Despite being a language with high level structures, it also has some low
+level features, such as direct memory control through pointers.
+Nowadays, C language is not very popular when building applications, but it is still used for
+developing  operating  systems,  libraries  and  some  tools  such  as  compilers  for  other
+languages. It is very appreciated because of the efficiency of its code.
