@@ -1,15 +1,15 @@
-Pregunta1¿?...
-Respuesta A
-Respuesta B
-Respuesta C
-2
-Pregunta2¿?...
-Respuesta A
-Respuesta B
-Respuesta C
+Which definition of software is correct?
+Set of programs, documentation and data related with a computer
+Part of physical components of a PC
+None is correct
+1
+What three elements make up the software?
+Programs, data and physical components
+Data, physical components and documentation
+Programs, data and documentation
 3
-Pregunta3¿?...
-Respuesta A
-Respuesta B
-Respuesta C
+What is a "program"?
+Set of instructions that provide the desired functionality
+Software documents that explain how to use it
+It's a set of programs, documentation and data
 1

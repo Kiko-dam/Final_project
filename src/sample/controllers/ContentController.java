@@ -43,7 +43,6 @@ public class ContentController implements Initializable
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
         showUnits();
-
         listUnits.getSelectionModel().selectedItemProperty().addListener(
                 (ChangeListener<Unit>) (observable, oldValue, newValue) -> {
                     if (newValue != null)
@@ -129,13 +128,18 @@ public class ContentController implements Initializable
         {
             String path = "src/texts/unit/" + chosenUnit + "/" + title + ".txt";
             String content = "";
+
             List<String> lines = Files.readAllLines(Paths.get(path));
             for (int i = 0; i < lines.size(); i++)
+            {
                 content += lines.get(i);
+                if (lines.get(i).equals(""))
+                    content += "\n\n";
+            }
 
             txtArea.setText(content);
         }
-        catch (IOException e)
+        catch (Exception e)
         {
             error.setContentText("Error al mostrar los contenidos");
             error.show();
