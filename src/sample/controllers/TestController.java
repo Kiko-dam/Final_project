@@ -158,7 +158,7 @@ public class TestController  implements Initializable {
             dialog.setHeaderText("");
             dialog.setContentText("Great job you did a total of "+
                     lblScore.getText().split("/")[0] +
-                    "corrects answers");
+                    " corrects answers");
             dialog.showAndWait();
 
             ((Node) (actionEvent.getSource())).getScene().getWindow().hide();

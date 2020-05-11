@@ -1,3 +1,3 @@
-Tema 1 Apartado 1
-Tema 1 Apartado 2
-Tema 1 Apartado 3
+1.1. Software and program
+1.2. Languages and compilers
+1.3. Some popular languages

@@ -1,0 +1,15 @@
+We  have  seen  that  programs  are  sets  of  instructions  that  are  provided  to  a  computer  to
+complete a task. These instructions are written in a programming language of our  choice,
+and this way we create some text files called source code, written in the chosen language.
+
+1.1.2. Language types
+
+When  we want  to  choose  a  specific programming  language,  we  distinguish  between  high
+level languages  (close  to  human  language,  and  so,  easier  to  understand  by  the
+programmers),  and  low  level languages  (close  to  machine  language,  and  so,  harder  to
+understand by the programmers, but more efficient).
+- We  have  a  wide  variety  of high level languages to  choose,  depending  on the type  of
+application that we want to implement. We can talk about C, C++, C#, Java, Javascript,
+PHP, Python, etc.
+- Among low level languages, maybe the most popular one is the assembly language, a
+very concrete set of instructions that are easily translated into machine language.
