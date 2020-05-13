@@ -1,4 +1,16 @@
-Pregunta¿?...
-Respuesta A
-Respuesta B
-Respuesta C
+Which of these three languages ​​is a programming language?
+C
+R2D2
+Both of them
+1
+Which of these three languages ​​is the most suitable?
+Objective-C
+C
+GAP
+2
+C language is a evolution of..
+Java
+C#
+B
+3
+
