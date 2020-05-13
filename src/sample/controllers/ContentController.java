@@ -143,9 +143,22 @@ public class ContentController implements Initializable
         }
     }
 
-    public void loadTest(ActionEvent actionEvent) throws IOException {
-        TestController newTest = new TestController();
-        newTest.openTestWindow(listSections.getSelectionModel().getSelectedItems().toString());
+    public void loadTest(ActionEvent actionEvent) throws IOException
+    {
+        if(listSections.getSelectionModel().getSelectedIndex()>=0) {
+            TestController newTest = new TestController();
+            newTest.openTestWindow(listSections.getSelectionModel().getSelectedItems().toString());
+        }
+        else
+        {
+
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("Error");
+            dialog.setHeaderText("");
+            dialog.setContentText("You must choose the unit and the section to \n " +
+                    "generate the appropriate test for your level.");
+            dialog.showAndWait();
+        }
     }
 
     public static int getUnit()
