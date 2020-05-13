@@ -32,7 +32,6 @@ public class TestController  implements Initializable {
     public int actualQuestion;
     public int totalQuestions;
     public Label lblScore;
-    public boolean alreadyAnswered;
     public  Stage stage;
     public  Scene scene;
     public Button btnStart;
@@ -84,7 +83,6 @@ public class TestController  implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         startTest();
     }
 
@@ -127,7 +125,6 @@ public class TestController  implements Initializable {
         totalQuestions =test.size();
         Collections.shuffle(test);
         lblScore.setText("0/"+totalQuestions);
-        alreadyAnswered =true;
     }
 
     public void generateQuestion(ActionEvent actionEvent)
@@ -135,20 +132,11 @@ public class TestController  implements Initializable {
         //This method is in charge of loading the next (question / answers) once the previous one has been answered.
         Alert dialog;
         if(actualQuestion < totalQuestions) {
-            if (alreadyAnswered) {
+
                 txtQuestion.setText(test.get(actualQuestion).getQuestion());
                 lblAnswer1.setText(test.get(actualQuestion).getAnswer1());
                 lblAnswer2.setText(test.get(actualQuestion).getAnswer2());
                 lblAnswer3.setText(test.get(actualQuestion).getAnswer3());
-                alreadyAnswered = false;
-            } else {
-                dialog = new Alert(Alert.AlertType.ERROR);
-                dialog.setTitle("Error");
-                dialog.setHeaderText("");
-                dialog.setContentText(" First check this question! It's not answered!");
-                dialog.showAndWait();
-
-            }
         }
         else {
             dialog = new Alert(Alert.AlertType.INFORMATION);
@@ -168,53 +156,41 @@ public class TestController  implements Initializable {
         //When the user marks an answer and confirms his selection.
         //It is checked if it has been successful and the corresponding message is shown.
         Alert dialog;
-        if(!alreadyAnswered) {
-            int actualScore = Integer.parseInt(lblScore.getText().split("/")[0]);
+        int actualScore = Integer.parseInt(lblScore.getText().split("/")[0]);
+        int correctAnswer = test.get(actualQuestion).correctAnswer;
+        boolean success = false;
 
-            int correctAnswer = test.get(actualQuestion).correctAnswer;
-            boolean success = false;
-            if (c1.isSelected()) {
-                if (correctAnswer == 1)
-                    success = true;
-            }
-            if (c2.isSelected()) {
-                if (correctAnswer == 2)
-                    success = true;
-            }
-            if (c3.isSelected()) {
-                if (correctAnswer == 3)
-                    success = true;
-            }
-
-            if(!success) {
-                dialog = new Alert(Alert.AlertType.WARNING);
-                dialog.setTitle("Error");
-                dialog.setHeaderText("");
-                dialog.setContentText("It was the option " +test.get(actualQuestion).correctAnswer);
-                dialog.showAndWait();
-                alreadyAnswered = true;
-                actualQuestion++;
-                generateQuestion(actionEvent);
-            } else {
-                dialog = new Alert(Alert.AlertType.INFORMATION);
-                dialog.setTitle("Good Job");
-                dialog.setHeaderText("");
-                dialog.setContentText("Perfect!");
-                dialog.showAndWait();
-                actualScore++;
-                lblScore.setText(actualScore + "/" + lblScore.getText().split("/")[1]);
-                alreadyAnswered = true;
-                actualQuestion++;
-                generateQuestion(actionEvent);
-            }
+        if (c1.isSelected()) {
+            if (correctAnswer == 1)
+                success = true;
         }
-        else
-        {
-            dialog = new Alert(Alert.AlertType.ERROR);
+        if (c2.isSelected()) {
+            if (correctAnswer == 2)
+                success = true;
+        }
+        if (c3.isSelected()) {
+            if (correctAnswer == 3)
+                success = true;
+        }
+
+        if(!success) {
+            dialog = new Alert(Alert.AlertType.WARNING);
             dialog.setTitle("Error");
             dialog.setHeaderText("");
-            dialog.setContentText("Question already answered!");
+            dialog.setContentText("It was the option " +test.get(actualQuestion).correctAnswer);
             dialog.showAndWait();
+            actualQuestion++;
+            generateQuestion(actionEvent);
+        } else {
+            dialog = new Alert(Alert.AlertType.INFORMATION);
+            dialog.setTitle("Good Job");
+            dialog.setHeaderText("");
+            dialog.setContentText("Perfect!");
+            dialog.showAndWait();
+            actualScore++;
+            lblScore.setText(actualScore + "/" + lblScore.getText().split("/")[1]);
+            actualQuestion++;
+            generateQuestion(actionEvent);
         }
 
     }
