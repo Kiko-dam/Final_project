@@ -4,16 +4,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import sample.data.Unit;
 
 import java.io.BufferedReader;
@@ -53,7 +47,6 @@ public class ContentController implements Initializable
                 }
         );
     }
-
 
 
     private void showUnits()
@@ -107,7 +100,8 @@ public class ContentController implements Initializable
         }
         catch (IOException fileError)
         {
-            error.setContentText("Error al mostrar los apartados");
+            error.setContentText("\n" +
+                    "Ops.. it seems that something has happened while loading the content.");
             error.show();
         }
 
@@ -141,7 +135,7 @@ public class ContentController implements Initializable
         }
         catch (Exception e)
         {
-            error.setContentText("Error al mostrar los contenidos");
+            error.setContentText("Ops.. it seems that something has happened while loading the content.");
             error.show();
         }
     }

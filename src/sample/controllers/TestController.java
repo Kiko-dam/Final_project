@@ -42,7 +42,7 @@ public class TestController  implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        //Obtengo la unidad actual y la seccion actual
+        //Once the user selects a unit and a section, we generate the appropriate test.
         unit =   ContentController.getUnit();
         section = ContentController.getSection();
         lines= new ArrayList<>();
@@ -54,7 +54,6 @@ public class TestController  implements Initializable {
     @FXML
     public void openTestWindow( String sectionName) throws IOException
     {
-        //La nueva ventana tendra como nombre la unidad y la seccion de la que se está haciendo el test nuevo.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("test.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
@@ -67,7 +66,6 @@ public class TestController  implements Initializable {
 
     public void loadTest()
     {
-        //Este método se encarga de cargar las preguntas de la unidad / seccion seleccionada.
         String pathOfTitles = "src/texts/unit/"+unit+"/test/"+section+".txt";
             try {
                 BufferedReader inputFile = new BufferedReader(
@@ -81,7 +79,6 @@ public class TestController  implements Initializable {
                 while (line != null);
                 inputFile.close();
 
-
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -93,7 +90,8 @@ public class TestController  implements Initializable {
 
     public void startTest()
     {
-        //Aqui tendremos que hacer el bloque que vaya sacando las preguntas de la lista con las preguntas cargadas anteriormente
+        //Here the test is loaded from the file. Once loaded the list is shuffled so
+        //that the questions do not appear in the same order.
         int position = 1;
         Test t ;
         String question="";
@@ -129,12 +127,12 @@ public class TestController  implements Initializable {
         totalQuestions =test.size();
         Collections.shuffle(test);
         lblScore.setText("0/"+totalQuestions);
-        System.out.println("preguntas: "+totalQuestions);
         alreadyAnswered =true;
     }
 
     public void generateQuestion(ActionEvent actionEvent)
     {
+        //This method is in charge of loading the next (question / answers) once the previous one has been answered.
         Alert dialog;
         if(actualQuestion < totalQuestions) {
             if (alreadyAnswered) {
@@ -167,8 +165,8 @@ public class TestController  implements Initializable {
 
     public void checkQuestion(ActionEvent actionEvent)
     {
-        //Creo que este podria ser un método por  ejemplo, deberiamos pasarle las respuestas y podemos avisar al usuario
-        //A través de  ventanas si acierta o falla..
+        //When the user marks an answer and confirms his selection.
+        // It is checked if it has been successful and the corresponding message is shown.
         Alert dialog;
         if(!alreadyAnswered) {
             int actualScore = Integer.parseInt(lblScore.getText().split("/")[0]);
@@ -188,7 +186,7 @@ public class TestController  implements Initializable {
                     success = true;
             }
 
-            if (!success) {
+            if(!success) {
                 dialog = new Alert(Alert.AlertType.WARNING);
                 dialog.setTitle("Error");
                 dialog.setHeaderText("");
