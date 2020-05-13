@@ -1,4 +1,15 @@
-Pregunta¿?...
-Respuesta A
-Respuesta B
-Respuesta C
+What is a programming language?
+It is a formal language designed to carry out processes that can be carried out by machines such as computers.
+Body movements, body expression, or body language.
+It is a structured communication system for which there is a context of use and certain formal combinatorial principles.
+1
+C ++, Fortran, Cobol, Lisp are level languages?
+High
+low
+Medium
+3
+What is the Java compiler?
+It is an accounting program that translates a program written in one programming language into another programming language.
+It is a program that transforms source code written in java to a platform neutral code known as java.
+It is a free integrated development environment, made mainly for the Java programming language.
+2

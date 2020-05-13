@@ -1,0 +1,24 @@
+Source  code  editor:  This  is  an  essential  part  of  every  IDE,  since  it  lets  us  write the
+source  code  of  our program.  It usually highlights the  code  syntax,  and may  also have
+some additional features,  such as  code autocompletion, auto indentation,  context help,
+access to API documentation, auto insertion of parentheses, square brackets...
+
+Compilers: This tool is in charge of translating our source code into machine code. Some
+IDEs lets us add many different compilers for many different languages, as we will see
+later.
+
+Interpreters: It is also possible that our IDE uses some kind of virtual machine, in case
+our  programming  language  needs  it.  So,  the  executable  will  not  be  run  from  the
+processor, but from an intermediate virtual machine.
+
+Debugger:  It  is  in  charge  of  debugging  our  source  code.  In  other  words,  it  lets us
+examine  step  by  step the  execution  of  our  program,  check the  values  of the  different
+variables and stop the program at any point.
+
+GUI builder: It simplifies the creation of graphical user interfaces, so that we can place
+the different controls (buttons, lists, menus...) wherever we want.
+
+Version control: With version control tools we can manage every change in the source
+code of our projects, so that we will have different versions of each source file, and we
+can  go  back  and  recover  any  older  version  at  any  time.  It  is  an  essential  tool  for
+teamwork.

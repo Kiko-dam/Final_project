@@ -13,3 +13,31 @@ application that we want to implement. We can talk about C, C++, C#, Java, Javas
 PHP, Python, etc.
 - Among low level languages, maybe the most popular one is the assembly language, a
 very concrete set of instructions that are easily translated into machine language.
+
+1.1.2.2. Compilers and other language processors
+
+Computers can't understand any of the programming languages that humans use to create
+their programs. In order to make them work, their instructions need to be translated into a
+language  that  computers  can  understand.  This  language  is  called  machine  code,  and  is
+composed of bits (zeros and ones).
+If  we  want to translate  a  given  programming  language  into  machine  code,  we  use  a tool
+called  compiler,  although this  assertion  is  not  completely  true.  There  are  some  different
+language processors that can be used, depending on the language itself:
+Compilers: they translate the code written in a specific language into machine code, and
+they generate an executable file with the  result. For instance, if we compile a program
+written in C under Windows, we will get an EXE file that we will be able to run.
+Interpreters: they translate from the specified programming language to machine code
+"on the fly". In other words, they don't generate any executable file. So, every time we
+need to run the program, we need to have the source file available. This kind of language
+processor  is  very  usual  in  languages like  PHP  or  Python.  This  way, the  response time
+increases a little, but the program can be run in multiple platforms.
+Virtual machines:  an intermediate  solution  between  compilers  and interpreters is the
+one used by languages like Java. These programs are not compiled into a native machine
+code (there is no EXE file in Java, for instance), and they are not interpreted either. Java
+compiles the source code and translates it into its own intermediate machine code. Then,
+it  runs its virtual machine  (JVM, Java Virtual Machine), that is in charge of interpreting
+and running this code every time we need. This way, we don't need to have the source
+code  available  before  we  run the  program,  and  we  don't  depend  on  a  given  platform
+either  (Windows,  Linux,  etc.).  We  only  need to  have  a  JVM  installed  in  our  system  in
+order to run our Java programs. The same thing happens with C# and its virtual platorm
+.NET.

@@ -1,0 +1,16 @@
+Introduction
+
+A  development  environment  is  a  set  of  processes  and  programming  tools  that  we  use  to
+create software. An integrated develoment environment or IDE is an environment in which
+processes  and  tools  are  coordinated,  and  they  provide  an  ordered  interface,  and  some
+suitable views for the software development process (or, at least, for writing the code, test it
+and pack it).
+
+The first IDEs were born at the beginning of the 70s, but they became really popular along
+the 90s. Their first aim is to save time and have more reliability in software processes. They
+provide the programmer some useful components that increase the efficiency and reduce the
+coding time.
+
+Some examples of these IDEs are Geany, Visual Studio Code, NetBeans, Eclipse... In this unit
+we are going to focus on the first two, since they are general purpose environments, this is,
+they can be used for many different programming languages.
