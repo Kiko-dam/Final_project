@@ -10,7 +10,7 @@
       <HBox alignment="CENTER" prefHeight="84.0" prefWidth="600.0" spacing="50.0">
          <children>
             <Label fx:id="lblAnswer1" text="Answer" visible="false" />
-            <RadioButton fx:id="c1" mnemonicParsing="false" selected="true" text="A" visible="false">
+            <RadioButton fx:id="c1" mnemonicParsing="false" selected="true" text="1" visible="false">
                <toggleGroup>
                   <ToggleGroup fx:id="answers" />
                </toggleGroup></RadioButton>
@@ -19,13 +19,13 @@
        <HBox alignment="CENTER" prefHeight="96.0" prefWidth="600.0" spacing="50.0">
            <children>
                <Label fx:id="lblAnswer2" text="Answer" visible="false" />
-               <RadioButton fx:id="c2" mnemonicParsing="false" text="B" toggleGroup="$answers" visible="false" />
+               <RadioButton fx:id="c2" mnemonicParsing="false" text="2" toggleGroup="$answers" visible="false" />
            </children>
        </HBox>
        <HBox alignment="CENTER" prefHeight="75.0" prefWidth="600.0" spacing="50.0">
            <children>
                <Label fx:id="lblAnswer3" text="Answer" visible="false" />
-               <RadioButton fx:id="c3" mnemonicParsing="false" text="C" textAlignment="RIGHT" toggleGroup="$answers" visible="false" />
+               <RadioButton fx:id="c3" mnemonicParsing="false" text="3" textAlignment="RIGHT" toggleGroup="$answers" visible="false" />
            </children>
        </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
