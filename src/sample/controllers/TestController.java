@@ -166,7 +166,7 @@ public class TestController  implements Initializable {
     public void checkQuestion(ActionEvent actionEvent)
     {
         //When the user marks an answer and confirms his selection.
-        // It is checked if it has been successful and the corresponding message is shown.
+        //It is checked if it has been successful and the corresponding message is shown.
         Alert dialog;
         if(!alreadyAnswered) {
             int actualScore = Integer.parseInt(lblScore.getText().split("/")[0]);

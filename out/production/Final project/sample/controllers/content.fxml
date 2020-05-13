@@ -6,13 +6,13 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ContentController">
    <children>
-      <HBox prefHeight="22.0" prefWidth="600.0" spacing="200.0">
+      <HBox prefHeight="22.0" prefWidth="600.0" spacing="260.0">
          <children>
-            <Label text="Temario" />
-            <Label text="Apartados" />
+            <Label text="Unit" />
+            <Label text="Section" />
          </children>
          <padding>
-            <Insets left="40.0" />
+            <Insets left="120.0" />
          </padding>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">

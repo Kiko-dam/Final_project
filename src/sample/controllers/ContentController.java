@@ -51,6 +51,7 @@ public class ContentController implements Initializable
 
     private void showUnits()
     {
+        //This method loads a list of units working as an index at the left side listview.
         try {
             BufferedReader inputFile = new BufferedReader(
                     new FileReader(new File("src/texts/unit/units.txt")));
@@ -73,13 +74,14 @@ public class ContentController implements Initializable
         }
         catch (IOException fileError)
         {
-            error.setContentText("Error al mostrar los temas");
+            error.setContentText("Ops.. it seems that something has happened while loading the unit content.");
             error.show();
         }
     }
 
     private void showSections(int numberOfUnit)
     {
+        //This method loads a list of sections working as an index at the right side listview.
         String pathOfTitles = "src/texts/unit/" + numberOfUnit + "/sections.txt";
         List<String> sect = new ArrayList<>();
         try {
@@ -101,7 +103,7 @@ public class ContentController implements Initializable
         catch (IOException fileError)
         {
             error.setContentText("\n" +
-                    "Ops.. it seems that something has happened while loading the content.");
+                    "Ops.. it seems that something has happened while loading the section content.");
             error.show();
         }
 
@@ -118,6 +120,7 @@ public class ContentController implements Initializable
 
     private void ShowContent(String title)
     {
+        //Once the user has chosen the topic, the content is loaded according  to the unit  and the section.
         try
         {
             String path = "src/texts/unit/" + chosenUnit + "/" + title + ".txt";
