@@ -1,0 +1,24 @@
+1. Requirements analysis:  this  stage  includes  the  communication  with  the  customer  to
+clarify  his  needs,  and  an  analysis  stage  to  sketch  out  the  main  behaviour  of  the
+application. It can be divided into two stages:
+Requirements  specification:  the  communication  with  the  customer,  in  which  we
+will arrange some interviews or other ways of getting information. We must clarify
+the needs to be fulfilled, and once the requirements have been gathered, we write a
+document called requirements specification, that must be as complete as possible.
+Analysis: from the  requirements  specification created in  previous  stage,  we  must
+now create a new document where we will use some helpful diagrams to represent
+the main functionalities of the application and their connections or dependencies.
+
+2. Design:  from  the  analysis  documents  set  before,  we  can  now  determine  how  the
+software  will  work.  Here  we  will  use  other  diagrams  that  will  help  us  implement  the
+software.
+
+3. Implementation:  this  stage  should  be  started  from  previous  design  stage,  using  a
+specific programming language (or more than one).
+
+4. Testing: once the product has been implemented, we must test it to check if it fulfills all
+the  requirements and there is no bug. These tests  should be checked by someone not
+involved in the implementation process.
+
+5. Maintenance:  this last  stage  consists  in  improving  the  performance  of  the  software
+product, by adding new extensions, or fixing some bugs

@@ -1,4 +1,15 @@
-Pregunta¿?...
-Respuesta A
-Respuesta B
-Respuesta C
+Which is the correct order:
+Requirements analysis,Design,Implementation,Testing,Maintenance.
+Design,Implementation,Requirements analysis,Maintenance,Testing.
+Requirements analysis,Maintenance,Testing,Design,Implementation.
+1
+What includes the requirements analysis:
+Improving  the  performance  of  the  software product.
+Test it to check if it fulfills all the  requirements.
+Communication with the customer to clarify his needs, and an analysis stage to sketch out the main behaviour of the application.
+3
+Which are the both stages of the requirements analysis:
+Requirements  specification and Analysis.
+Design and Testing
+Implementation and Maintenance
+1
