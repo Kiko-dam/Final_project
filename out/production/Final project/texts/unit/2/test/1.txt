@@ -1,4 +1,15 @@
-Pregunta¿?...
-Respuesta A
-Respuesta B
-Respuesta C
+What is a development  environment?
+Is a set  of  processes  and  programming  tools  that  we  use  to create software.
+Is an office full of people working hard.
+Is a set of programs working together to reach the perfection.
+1
+When the first IDEs were born?
+90s
+80s
+70s
+3
+Which of the following programs are IDEs
+Excell,Google,Toad,,
+Geany,Visual Studio Code...
+Steam,Stadia...
+2

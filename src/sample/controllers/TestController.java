@@ -102,7 +102,6 @@ public class TestController  implements Initializable {
             switch (position)
             {
                 case 1: question = lines.get(i);
-                    System.out.println(lines.get(i));
                     position++;
                 break;
                 case 2: answer1 = lines.get(i);

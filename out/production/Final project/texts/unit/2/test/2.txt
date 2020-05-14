@@ -1,4 +1,10 @@
-Pregunta¿?...
-Respuesta A
-Respuesta B
-Respuesta C
+Compiler:
+Is in charge of translating our source code into machine code.
+Is in  charge  of  debugging  our  source  code.
+It simplifies the creation of graphical user interfaces.
+1
+Interpreters:
+It  is  in  charge  of  debugging  our  source code.
+It  is  an  essential  tool  for teamwork.
+Converts the source code line-by-line during RUN Time.
+3
