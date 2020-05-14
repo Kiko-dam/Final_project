@@ -1,0 +1,2 @@
+Kiko -> Desarrollo del apartado visual, programación del apartado de generación de test
+Dani -> Programación de carga de contenido, desarrollo de guía de usuario
